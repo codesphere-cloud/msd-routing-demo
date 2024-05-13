@@ -7,14 +7,14 @@ test:
 run:
   foo:
     steps:
-      - command: npx --yes serve foo-src
+      - command: npx --yes serve msd-routing-demo/foo-src
     plan: 8
     replicas: 1
     network:
       path: /foo
   bar:
     steps:
-      - command: npx --yes serve bar-src
+      - command: npx --yes serve msd-routing-demo/bar-src
     plan: 8
     replicas: 1
     network:
