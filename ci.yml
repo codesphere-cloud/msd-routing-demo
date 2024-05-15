@@ -25,4 +25,4 @@ run:
     plan: 8
     replicas: 1
     network:
-      path: /crazyPath/!='
+      path: /crazy-path/!='
