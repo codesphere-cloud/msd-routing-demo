@@ -19,3 +19,10 @@ run:
     replicas: 1
     network:
       path: /foo/bar
+  crazy:
+    steps:
+      - command: npx --yes serve crazy-src
+    plan: 8
+    replicas: 1
+    network:
+      path: /crazyPath/!='
