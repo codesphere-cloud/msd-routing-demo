@@ -7,14 +7,14 @@ test:
 run:
   foo:
     steps:
-      - command: npx --yes serve foo-src
+      - command: SERVER_NAME=foo PORT=3000 python3 server.py
     plan: 8
     replicas: 1
     network:
       path: /foo
   bar:
     steps:
-      - command: npx --yes serve bar-src
+      - command: SERVER_NAME=bar PORT=3000 python3 server.py
     plan: 8
     replicas: 1
     network:
