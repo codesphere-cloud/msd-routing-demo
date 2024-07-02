@@ -12,7 +12,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
         self.wfile.write(
-            f'\tResponse:{server}:{replica}:{self.path}\n.encode('utf-8')
+            f'\tResponse:{server}:{replica}:{self.path}\n'.encode('utf-8')
         )
 
 with socketserver.TCPServer(('', port), RequestHandler) as httpd:
