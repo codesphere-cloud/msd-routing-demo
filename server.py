@@ -1,20 +1,16 @@
-import http.server
-import socketserver
+from flask import Flask, request
 import os
 
 replica = os.environ.get('CS_REPLICA')
-server = os.environ.get('SERVER_NAME')
+server = os.environ.get('CS_SERVER')
 port = int(os.environ.get('PORT'))
 
-class RequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/plain')
-        self.end_headers()
-        self.wfile.write(
-            f'\tResponse:{server}:{replica}:{self.path}\n'.encode('utf-8')
-        )
+app = Flask(__name__)
 
-with socketserver.TCPServer(('', port), RequestHandler) as httpd:
-    print(f'Serving at port: {port}')
-    httpd.serve_forever()
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return f'Response:{server}:{replica}:/{path}'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=port)

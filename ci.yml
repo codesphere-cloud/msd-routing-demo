@@ -1,20 +1,23 @@
 schemaVersion: v0.2
 prepare:
   steps:
-    - command: echo prepare
+    - command: pip install flask
+    - command: CS_SERVER=codesphere-ide PORT=3000 python3 server.py
 test:
   steps: []
 run:
   foo:
     steps:
-      - command: SERVER_NAME=foo PORT=3000 python3 server.py
+      - command: pip install flask
+      - command: PORT=3000 python3 server.py
     plan: 8
     replicas: 1
     network:
       path: /foo
   bar:
     steps:
-      - command: SERVER_NAME=bar PORT=3000 python3 server.py
+      - command: pip install flask
+      - command: PORT=3000 python3 server.py
     plan: 8
     replicas: 1
     network:
