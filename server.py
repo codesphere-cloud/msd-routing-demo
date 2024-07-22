@@ -1,4 +1,4 @@
-from flask import jsonify, Flask, request
+from flask import Flask, request
 import os
 
 replica = os.environ.get('CS_REPLICA')
@@ -10,10 +10,7 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    return jsonify(
-		server=server,
-		replica=replica,
-		path=path)
+    return f'Response:{server}:{replica}:/{path}'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
