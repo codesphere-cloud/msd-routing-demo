@@ -8,16 +8,15 @@ test:
 run:
   foo:
     steps:
-      - command: pip install flask
-      - command: PORT=3000 python3 server.py
+      - command: pip install flask --target=/home/user/app/pipLib
+      - command: PYTHONPATH=/home/user/app/pipLib PORT=3000 python3 server.py
     plan: 8
     replicas: 1
     network:
       path: /foo
   bar:
     steps:
-      - command: pip install flask
-      - command: PORT=3000 python3 server.py
+      - command: PYTHONPATH=/home/user/app/pipLib PORT=3000 python3 server.py
     plan: 8
     replicas: 1
     network:
