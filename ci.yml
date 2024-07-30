@@ -2,7 +2,7 @@ schemaVersion: v0.2
 prepare:
   steps:
     - command: pip install flask --target=/home/user/app/pipLib
-    - command: CS_SERVER=codesphere-ide PORT=3000 python3 server.py
+    - command: PYTHONPATH=/home/user/app/pipLib CS_SERVER=codesphere-ide PORT=3000 python3 server.py
 test:
   steps: []
 run:
