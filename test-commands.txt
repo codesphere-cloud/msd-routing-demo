@@ -1,0 +1,5 @@
+curl ws-server-${WORKSPACE_ID}-foo:3000
+
+curl ws-server-${WORKSPACE_ID}-foo:3000/hello
+
+curl ws-server-${WORKSPACE_ID}-bar:3000/hello/withChild
