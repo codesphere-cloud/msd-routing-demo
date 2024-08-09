@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify, Response
-import requests
+from flask import Flask, request
 import os
 import urllib.request
 
@@ -18,17 +17,6 @@ def catch_all(path):
         try:
             contents = urllib.request.urlopen(redirect_url).read()
             return contents
-            # Send a GET request to the redirect URL
-            response = requests.get(redirect_url)
-
-            # Create a Flask response object with the content from the external request
-            flask_response = Response(response.content)
-
-            # Set the status code and headers from the external response
-            flask_response.status_code = response.status_code
-            flask_response.headers = response.headers
-
-            return flask_response
 
         except requests.exceptions.RequestException as e:
             return jsonify({"error": str(e)}), 400
