@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, Response
 import requests
 import os
+import urllib.request
 
 replica = os.environ.get('CS_REPLICA')
 server = os.environ.get('CS_SERVER')
@@ -15,6 +16,8 @@ def catch_all(path):
 
     if redirect_url:
         try:
+            contents = urllib.request.urlopen(redirect_url).read()
+            return contents
             # Send a GET request to the redirect URL
             response = requests.get(redirect_url)
 
