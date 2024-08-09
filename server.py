@@ -29,7 +29,7 @@ def catch_all(path):
         except requests.exceptions.RequestException as e:
             return jsonify({"error": str(e)}), 400
 
-    return jsonify({"message": "No redirect URL provided"}), 400
+        return jsonify({"message": "No redirect URL provided"}), 400
 
     else:
         return f'Response:{server}:{replica}:/{path}'
