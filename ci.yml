@@ -4,19 +4,25 @@ prepare:
     - command: pip install flask --target=/home/user/app/pipLib
     - command: PYTHONPATH=/home/user/app/pipLib CS_SERVER=codesphere-ide PORT=3000 python3 server.py
 test:
-  steps: []
+  steps:
+    - command: echo test
+    - command: while true; do echo "hi"; sleep 1; done
 run:
   foo:
     steps:
       - command: PYTHONPATH=/home/user/app/pipLib PORT=3000 python3 server.py
     plan: 8
     replicas: 1
+    isPublic: true
     network:
       path: /foo
+      stripPath: false
   bar:
     steps:
       - command: PYTHONPATH=/home/user/app/pipLib PORT=3000 python3 server.py
     plan: 8
     replicas: 1
+    isPublic: true
     network:
       path: /foo/bar
+      stripPath: false
