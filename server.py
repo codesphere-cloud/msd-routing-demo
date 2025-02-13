@@ -24,7 +24,7 @@ def catch_all(path):
         return jsonify({"message": "No redirect URL provided"}), 400
 
     else:
-        return f'Response:{server}:{replica}:/{path}'
+        return f'Response:{server}:{replica}:{port}:/{path}'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
