@@ -1,0 +1,21 @@
+schemaVersion: v0.2
+prepare:
+  steps:
+    - command: echo my-profile-prepare
+test:
+  steps: []
+run:
+  foo:
+    steps:
+      - command: echo my-profile-run-foo
+    plan: 8
+    replicas: 1
+    network:
+      path: /foo
+  bar:
+    steps:
+      - command: echo my-profile-run-bar
+    plan: 8
+    replicas: 1
+    network:
+      path: /foo/bar
