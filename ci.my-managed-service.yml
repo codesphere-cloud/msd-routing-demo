@@ -1,0 +1,23 @@
+schemaVersion: v0.2
+prepare:
+  steps: []
+test:
+  steps: []
+run:
+  pg2:
+    provider:
+      name: postgres
+      version: v1
+    plan:
+      id: 0
+      parameters:
+        storage: 10000
+        cpu: 5
+        memory: 500
+    config:
+      version: "17.6"
+      userName: app
+      databaseName: dbpg
+    secrets:
+      userPassword: password
+      superuserPassword: password
