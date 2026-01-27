@@ -16,7 +16,7 @@ run:
         memory: 500
     config:
       version: "17.6"
-      userName: app6
+      userName: app
       databaseName: dbpg
     secrets:
       userPassword: password
